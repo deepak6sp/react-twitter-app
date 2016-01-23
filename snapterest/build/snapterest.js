@@ -18652,49 +18652,36 @@ if (process.env.NODE_ENV !== 'production') {
 
 var React = require("react");
 var ReactDom = require("react-dom");
+var Application = require("./components/application_react");
 
-var SomeReact = React.createClass({
-	displayName: "SomeReact",
+ReactDom.render(React.createElement(Application, null), document.getElementById("react-application"));
+
+},{"./components/application_react":157,"react":155,"react-dom":2}],157:[function(require,module,exports){
+"use strict";
+
+var React = require("react");
+var ReactDom = require("react-dom");
+//var Application = require("./collection_react");
+
+var Application = React.createClass({
+	displayName: "Application",
 
 	getInitialState: function getInitialState() {
 		return {
-			isHeader: true,
-			title: "my only first application",
-			count: 0,
-			divDisplay: { display: "block" }
+			count: 0
 		};
 	},
-	changeHandle: function changeHandle() {
-		this.setState({
-			isHeader: !this.state.isHeader
-			//divDisplay:{display:"none"}
-		});
-	},
 	render: function render() {
-		if (!this.state.isHeader) {
-			this.state.divDisplay.display = "none";
-		} else {
-			this.state.divDisplay.display = "block";
-		}
+		//console.log("this.state.collectionTweets"+ this.state.collectionTweets);
 		return React.createElement(
 			"div",
 			null,
-			React.createElement(
-				"div",
-				{ style: this.state.divDisplay },
-				this.state.title
-			),
-			this.state.count,
-			React.createElement(
-				"button",
-				{ onClick: this.changeHandle },
-				"click to count"
-			)
+			this.state.count
 		);
 	}
 
 });
 
-ReactDom.render(React.createElement(SomeReact, null), document.getElementById("react-application"));
+module.exports = Application;
 
 },{"react":155,"react-dom":2}]},{},[156]);
