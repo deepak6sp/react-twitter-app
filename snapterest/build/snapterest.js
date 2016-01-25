@@ -18657,26 +18657,76 @@ var Application = require("./components/application_react");
 ReactDom.render(React.createElement(Application, null), document.getElementById("react-application"));
 
 },{"./components/application_react":157,"react":155,"react-dom":2}],157:[function(require,module,exports){
-"use strict";
+'use strict';
 
-var React = require("react");
-var ReactDom = require("react-dom");
-//var Application = require("./collection_react");
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var Application = React.createClass({
-	displayName: "Application",
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var Stream = require("./stream_react");
+var Collection = require("./collection_react");
+
+var Application = _react2['default'].createClass({
+	displayName: 'Application',
 
 	getInitialState: function getInitialState() {
 		return {
-			count: 0
+			collectionTweets: {}
 		};
 	},
+
+	addTweetToCollection: function addTweetToCollection() {
+		var collectionTweets = this.state.collectionTweets;
+		collectionTweets[tweet_id] = tweets;
+		this.setState({
+			collectionTweets: collectionTweets
+		});
+	},
+
+	removeTweetFormCollection: function removeTweetFormCollection() {
+		var collectionTweets = this.state.collectionTweets;
+		delete collectionTweets[tweet_id];
+		this.setState({
+			collectionTweets: collectionTweets
+		});
+	},
+
+	removeAllTweetsFromCollection: function removeAllTweetsFromCollection() {
+		this.setState({
+			collectionTweets: {}
+		});
+	},
+
 	render: function render() {
-		//console.log("this.state.collectionTweets"+ this.state.collectionTweets);
-		return React.createElement(
-			"div",
-			null,
-			this.state.count
+		return _react2['default'].createElement(
+			'div',
+			{ className: 'container-fluid' },
+			_react2['default'].createElement(
+				'div',
+				{ className: 'row' },
+				_react2['default'].createElement(
+					'div',
+					{ className: 'col-md-4 text-center' },
+					_react2['default'].createElement(Stream, { onAddTweetToCollection: this.addTweetToCollection })
+				)
+			),
+			_react2['default'].createElement(
+				'div',
+				{ className: 'row' },
+				_react2['default'].createElement(
+					'div',
+					{ className: 'col-md-8' },
+					_react2['default'].createElement(Collection, { tweets: this.state.collectionTweets,
+						onRemoveTweetFromCollection: this.state.removeTweetFormCollection,
+						onRemoveAllTweetFromCollection: this.state.removeTweetFormCollection })
+				)
+			)
 		);
 	}
 
@@ -18684,4 +18734,10 @@ var Application = React.createClass({
 
 module.exports = Application;
 
-},{"react":155,"react-dom":2}]},{},[156]);
+},{"./collection_react":158,"./stream_react":159,"react":155,"react-dom":2}],158:[function(require,module,exports){
+"use strict";
+
+},{}],159:[function(require,module,exports){
+"use strict";
+
+},{}]},{},[156]);

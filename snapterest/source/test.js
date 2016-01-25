@@ -35,4 +35,25 @@ var SomeReact = React.createClass({
 
 });
 
+{/* ----- es6 -------------- 
+class Application extends React.Component{
+	constructor() {
+		super();
+		this.state={count:0};
+	}
+	changeHandle(){
+		this.setState({count : this.state.count +1 });
+	}
+	render(){
+		//console.log("this.state.collectionTweets"+ this.state.collectionTweets);
+		return (
+			<div>
+				{this.state.count}
+				<button onClick={this.changeHandle.bind(this)} >click to count</button>
+			</div>
+		);
+	}
+
+};
+*/}
 ReactDom.render(<SomeReact />, document.getElementById("react-application"));
