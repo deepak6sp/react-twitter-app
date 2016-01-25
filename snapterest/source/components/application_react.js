@@ -11,17 +11,17 @@ var Application = React.createClass({
 		};
 	},
 
-	addTweetToCollection : function(){
+	addTweetToCollection : function(tweet){
 		var collectionTweets = this.state.collectionTweets;
-		collectionTweets[tweet_id] = tweets;
+		collectionTweets[tweet.id] = tweets;
 		this.setState({
 			collectionTweets : collectionTweets
 		});
 	},
 
-	removeTweetFormCollection : function(){
+	removeTweetFormCollection : function(tweet){
 		var collectionTweets = this.state.collectionTweets;
-		delete collectionTweets[tweet_id];
+		delete collectionTweets[tweet.id];
 		this.setState({
 			collectionTweets : collectionTweets
 		});
@@ -44,7 +44,7 @@ var Application = React.createClass({
 						<div className = "col-md-8">
 							<Collection tweets = {this.state.collectionTweets}
 								onRemoveTweetFromCollection = {this.state.removeTweetFormCollection}
-								onRemoveAllTweetFromCollection = {this.state.removeTweetFormCollection} />
+								onRemoveAllTweetFromCollection = {this.state.removeAllTweetsFromCollection} />
 						</div>
 					</div>
 				</div>
