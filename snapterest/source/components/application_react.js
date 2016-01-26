@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 var Stream  = require ("./stream_react")
 var Collection = require("./collection_react");
 
