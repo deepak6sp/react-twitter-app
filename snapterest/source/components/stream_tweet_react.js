@@ -33,6 +33,27 @@ var StreamTweet = React.createClass({
 
 	},
 
+	componentWillReceiveProps : function(){
+		console.log("running componentWillReceiveProps in stream_tweet");
+		var currentTweetLength = this.props.tweet.text.length;
+		var nextTweetLength = nextProps.tweet.text.length;
+		var isNumberOfCharactersIncreasing : (nextTweetLength > currentTweetLength);
+		var headerText;
+		this.setstate({
+			numberOfCharactersIncreasing : isNumberOfCharactersIncreasing;
+		});
+		if (isNumberOfCharactersIncreasing){
+			headerText = "number of characters is increasing";
+		}
+		else{
+			headerText = "Latest public photos from Twitter";
+		}
+		this.setstate({
+			headerText:headerText;
+		})
+		window.snapterest.numberOfReceivedTweets++;
+	},
+
 	componentWillUnMount : function(){
 		console.log("running componentWillUnMount in stream_tweet");
 		delete window.snapterest;
