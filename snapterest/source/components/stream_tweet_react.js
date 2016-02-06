@@ -6,7 +6,7 @@ var Header = require ("./header_react");
 var StreamTweet = React.createClass({
 
 	getInitialState :function(){
-		console.log("running getInitialState in stream_tweet");
+		console.log("StreamTweet:1 - running getInitialState in stream_tweet");
 		return {
 			numberOfCharacterIsIncreasing : null,
 			header_text : null
@@ -14,7 +14,7 @@ var StreamTweet = React.createClass({
 	},
 
 	componentWillMount :function(){
-		console.log("running ComponentWillMount in stream_tweet");
+		console.log("StreamTweet:2 - running ComponentWillMount in stream_tweet");
 		this.setstate({
 			numberOfCharacterIsIncreasing : true,
 			headerText : "Latest public photo from Twitter"
@@ -26,7 +26,7 @@ var StreamTweet = React.createClass({
 	},
 
 	componentDidMount :  function(){
-		console.log("running componentDidMount in stream_tweet");
+		console.log("StreamTweet:3 - running componentDidMount in stream_tweet");
 		var componentDomRepresentation = ReactDom.findDOMNode(this);
 		window.snapterest.headerHtml = componentDomRepresentation.children[0].outerHTML;
 		window.snapterest.tweetHTML = componentDomRepresentation.children[1].outerHTML;
@@ -34,7 +34,7 @@ var StreamTweet = React.createClass({
 	},
 
 	componentWillReceiveProps : function(){
-		console.log("running componentWillReceiveProps in stream_tweet");
+		console.log("StreamTweet:4 - running componentWillReceiveProps in stream_tweet");
 		var currentTweetLength = this.props.tweet.text.length;
 		var nextTweetLength = nextProps.tweet.text.length;
 		var isNumberOfCharactersIncreasing : (nextTweetLength > currentTweetLength);
@@ -52,6 +52,20 @@ var StreamTweet = React.createClass({
 			headerText:headerText;
 		})
 		window.snapterest.numberOfReceivedTweets++;
+	},
+
+	shouldComponentUpdate : function(nextProps,nextState){
+		console.log("StreamTweet:5 - running shouldComponentUpdate in stream_tweet");
+		return (nextProps.tweet.text.length > 1);
+	},
+
+	componentWillUpdate : function(nextProps,nextState){
+		console.log("StreamTweet:6 - running componentWillUpdate in stream_tweet");
+	},
+
+	componentDidUpdate: function(prevProps,prevState){
+		console.log("StreamTweet:7 - running componentWillUpdate in stream_tweet");
+		window.snapterest.numberOfDisplayedTweets++;
 	},
 
 	componentWillUnMount : function(){
