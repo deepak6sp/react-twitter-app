@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 var headerStyle = {
- 	display:inline-block;
- 	color:red;
+ 	display:inline,
+ 	color:red
 };
 
 var Header = React.createClass({

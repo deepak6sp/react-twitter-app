@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 var ReactDomServer = require("react-dom/server");
-var CollectionControls =  require ("./CollectionControls_react");
-var TweetList = require('./tweetList_react');
+//var CollectionControls =  require ("./CollectionControls_react");
+//var TweetList = require('./tweetList_react');
 var Header = require("./header_react");
 
 

@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
 var tweetStyle={
-	width:300px;
-	height:300px;
-	display:inline-block;
+	width:'300px',
+	height:'300px',
+	display:'inline-block'
 };
 
 
 var imageStyle= {
-	border:1px solid black;
-	max-height:400px;
+	border:'1px solid black',
+	maxHeight:'400px'
 };
 
 
@@ -24,7 +24,7 @@ var Tweet = React.createClass({
 				return new Error('tweet must have an image');
 			}
 		},
-		onImageClick : React.propTypes.func;
+		onImageClick : React.propTypes.func
 	},
 	handleImageClick : function(){
 		var tweet = this.props.tweet;
